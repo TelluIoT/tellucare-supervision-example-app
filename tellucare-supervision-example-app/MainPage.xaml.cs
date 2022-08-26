@@ -17,14 +17,14 @@ namespace tellucare_supervision_example_app
             set
             {
                 urlToShow = value;
-                OnPropertyChanged(nameof(UrlToShow)); // Notify that there was a change on this property
+                OnPropertyChanged(nameof(UrlToShow));
             }
         }
         public MainPage()
         {
             InitializeComponent();
             BindingContext = this;
-            url.Text = "https://tellucare-embedded-dev.tellucloud.com/tilsyn-dev/viewPatient/SrT6vvyNHFFmZ0UiSWcb0q";
+            url.Text = "";
         }
         void OnButtonClicked(object sender, EventArgs args)
         {
@@ -38,9 +38,7 @@ namespace tellucare_supervision_example_app
                 urlStr += "#token=" + token.Text;
             }
             UrlToShow = urlStr;
-            // videoComp.Source = "https://tellucare-embedded-dev.tellucloud.com/tilsyn-dev/viewPatient/SrT6vvyNHFFmZ0UiSWcb0q";
             videoComp.Source = urlStr;
-            // await label.RelRotateTo(360, 1000);
         }
     }
 }
