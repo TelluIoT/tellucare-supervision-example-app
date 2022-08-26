@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tellucare_supervision_example_app.MainPage">
+
+    <StackLayout Orientation="Vertical">
+        <FlexLayout Direction="Row" 
+            Wrap="Wrap"
+            JustifyContent="SpaceAround">
+            <StackLayout x:Name="containerUrl" Orientation="Horizontal"  Padding="2,2,2,2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Patient URL" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
+                <Entry x:Name="url" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
+            </StackLayout>
+            <StackLayout x:Name="containerToken" Orientation="Horizontal"  Padding="2,2,2,2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Token" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
+                <Entry x:Name="token" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
+            </StackLayout>
+            <StackLayout x:Name="containerColor" Orientation="Horizontal"  Padding="2,2,2,2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Color" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
+                <Entry x:Name="color" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
+            </StackLayout>
+            <Button Text="Start"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="OnButtonClicked" />
+        </FlexLayout>
+        <Entry Text="{Binding UrlToShow}" IsReadOnly="true"/>
+        <WebView x:Name="videoComp" VerticalOptions="FillAndExpand"/>
+    </StackLayout>
+
+</ContentPage>
