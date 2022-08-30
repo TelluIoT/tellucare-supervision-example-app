@@ -9,3 +9,5 @@ The Tellucare supervision embedded player can be included in your app by using a
     <WebView Source="https://<ENVIRONMENT>/viewPatient/<PATIENT_ID>[<QUERRY_PARAMS>][#token=<AUTHENTICATION_TOKEN>]"/>
 	
 Format for the url in Source, see [Getting started with Embedded video player](https://calm-sky-0f8781003-1.westeurope.azurestaticapps.net/guide/embedded/embeddedVideoPlayer.html)
+
+See code in MainPage.xaml and MainPage.xaml.cs.
