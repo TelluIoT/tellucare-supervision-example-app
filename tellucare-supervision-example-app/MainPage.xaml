@@ -7,10 +7,15 @@
         <FlexLayout Direction="Row" 
             Wrap="Wrap"
             JustifyContent="SpaceAround">
-            <StackLayout x:Name="containerUrl" Orientation="Horizontal"  Padding="2,2,2,2"
+            <StackLayout x:Name="containerHealthProvider" Orientation="Horizontal"  Padding="2,2,2,2"
                  HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="Patient URL" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
-                <Entry x:Name="url" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
+                <Label Text="Realm" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
+                <Entry x:Name="healthProvider" Placeholder="Health Provider" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
+            </StackLayout>
+            <StackLayout x:Name="containerPatientId" Orientation="Horizontal"  Padding="2,2,2,2"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Patient ID" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
+                <Entry x:Name="patientId" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
             </StackLayout>
             <StackLayout x:Name="containerToken" Orientation="Horizontal"  Padding="2,2,2,2"
                  HorizontalOptions="Center" VerticalOptions="Center">
@@ -22,12 +27,16 @@
                 <Label Text="Color" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
                 <Entry x:Name="color" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
             </StackLayout>
-            <Button Text="Start"
+            <StackLayout x:Name="containerButton"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal"  Padding="2,2,2,2">
+                <Button Text="Start"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="OnButtonClicked" />
+                <CheckBox x:Name="checkBox"  IsChecked="{Binding ShowUrl}"  VerticalOptions="Center"/>
+                <Label Text="Show url" HorizontalOptions="StartAndExpand"  VerticalOptions="Center" FontSize="Small"></Label>
+            </StackLayout>
         </FlexLayout>
-        <Entry Text="{Binding UrlToShow}" IsReadOnly="true"/>
+        <Label Text="{Binding UrlToShow}"  FontSize="Small"  IsVisible="{Binding ShowUrl}"  Padding="2,2,2,2"/>
         <WebView x:Name="videoComp" VerticalOptions="FillAndExpand"/>
     </StackLayout>
 
