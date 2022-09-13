@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace tellucare_supervision_example_app
 {
@@ -13,6 +16,13 @@ namespace tellucare_supervision_example_app
     {
         public string urlToShow = "";
         public bool showUrl = false;
+        public bool showOptions = false;
+        public bool showControls = true;
+        public bool showAutoPlay = true;
+        public List<Server> servers = new List<Server>(){
+            new Server(){ Name = "dev", Url = "https://tellucare-embedded-dev.tellucloud.com/{0}/viewPatient/{1}" }
+        };
+        Server selectedServer;
         public string UrlToShow
         {
             get { return urlToShow; }
@@ -31,11 +41,60 @@ namespace tellucare_supervision_example_app
                 OnPropertyChanged(nameof(ShowUrl));
             }
         }
+        public List<Server> Servers
+        {
+            get { return servers; }
+            set
+            {
+                servers = value;
+                OnPropertyChanged(nameof(Servers));
+            }
+        }
+        public Server SelectedServer
+        {
+            get { return selectedServer; }
+            set
+            {
+                if (selectedServer != value)
+                {
+                    selectedServer = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public bool ShowControls
+        {
+            get { return showControls; }
+            set
+            {
+                showControls = value;
+                OnPropertyChanged(nameof(ShowControls));
+            }
+        }
+        public bool ShowAutoPlay
+        {
+            get { return showAutoPlay; }
+            set
+            {
+                showAutoPlay = value;
+                OnPropertyChanged(nameof(ShowAutoPlay));
+            }
+        }
+        public bool ShowOptions
+        {
+            get { return showOptions; }
+            set
+            {
+                showOptions = value;
+                OnPropertyChanged(nameof(ShowOptions));
+            }
+        }
         public MainPage()
         {
             InitializeComponent();
             BindingContext = this;
             healthProvider.Text = "";
+            SelectedServer = Servers.First();
         }
         void OnButtonClicked(object sender, EventArgs args)
         {
@@ -53,11 +112,11 @@ namespace tellucare_supervision_example_app
             {
                 return;
             }
-            string urlStr = String.Format("https://tellucare-embedded-dev.tellucloud.com/{0}/viewPatient/{1}", healthProvider.Text, patientId.Text);
+            string urlStr = String.Format(SelectedServer.Url, healthProvider.Text, patientId.Text);
             // add autoPlay
-            urlStr += addDivider("autoPlay", "true");
+            urlStr += addDivider("autoPlay", ShowAutoPlay ? "true" : "false");
             // add hideControls
-            urlStr += addDivider("hideControls", "false");
+            urlStr += addDivider("hideControls", !ShowControls ? "true" : "false");
             // update label with url
             UrlToShow = urlStr;
             // update source attribute on webview component

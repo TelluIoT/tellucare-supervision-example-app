@@ -3,10 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="tellucare_supervision_example_app.MainPage">
 
-    <StackLayout Orientation="Vertical">
-        <FlexLayout Direction="Row" 
-            Wrap="Wrap"
-            JustifyContent="SpaceAround">
+        <FlexLayout Direction="Column">
             <StackLayout x:Name="containerHealthProvider" Orientation="Horizontal"  Padding="2,2,2,2"
                  HorizontalOptions="Center" VerticalOptions="Center">
                 <Entry x:Name="healthProvider" Placeholder="Health Provider" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
@@ -19,21 +16,41 @@
                  HorizontalOptions="Center" VerticalOptions="Center">
                 <Entry x:Name="token" WidthRequest="250" VerticalOptions="Center"  FontSize="Small" Placeholder="Token" />
             </StackLayout>
+
+            <StackLayout x:Name="containerServer" Orientation="Horizontal"  Padding="2,2,2,2"  
+                 HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding ShowOptions}">
+                <Picker Title="Select a server"  FontSize="Small"  WidthRequest="250"
+                    SelectedItem="{Binding SelectedServer}" 
+                    ItemsSource="{Binding Servers}"
+                    ItemDisplayBinding="{Binding Name}" 
+                 />
+            </StackLayout>
             <StackLayout x:Name="containerColor" Orientation="Horizontal"  Padding="2,2,2,2"
-                 HorizontalOptions="Center" VerticalOptions="Center">
+                 HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding ShowOptions}">
                 <Entry x:Name="color" WidthRequest="250" VerticalOptions="Center"  FontSize="Small" Placeholder="Color" />
             </StackLayout>
-            <StackLayout x:Name="containerButton"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal"  Padding="2,2,2,2">
+            <StackLayout x:Name="containerControls"  WidthRequest="250" Orientation="Horizontal"  Padding="2,2,2,2"
+                 HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding ShowOptions}">
+                <CheckBox x:Name="checkBoxControls"  IsChecked="{Binding ShowControls}"  VerticalOptions="Center"/>
+                <Label Text="Show controls" HorizontalOptions="StartAndExpand"  VerticalOptions="Center" FontSize="Small"></Label>
+            </StackLayout>
+            <StackLayout x:Name="containerAutoPlay"  WidthRequest="250" Orientation="Horizontal"  Padding="2,2,2,2"
+                 HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding ShowOptions}">
+                <CheckBox x:Name="checkBoxAutoPlay"  IsChecked="{Binding ShowAutoPlay}"  VerticalOptions="Center"/>
+                <Label Text="Auto play" HorizontalOptions="StartAndExpand"  VerticalOptions="Center" FontSize="Small"></Label>
+            </StackLayout>
+            <StackLayout x:Name="containerButton"  HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal"  Padding="2,2,2,2">
                 <Button Text="Start"
-                VerticalOptions="CenterAndExpand"
+                VerticalOptions="Center"
                 HorizontalOptions="Center"
                 Clicked="OnButtonClicked" />
                 <CheckBox x:Name="checkBox"  IsChecked="{Binding ShowUrl}"  VerticalOptions="Center"/>
                 <Label Text="Show url" HorizontalOptions="StartAndExpand"  VerticalOptions="Center" FontSize="Small"></Label>
+                <CheckBox x:Name="checkBoxOptions"  IsChecked="{Binding ShowOptions}"  VerticalOptions="Center"/>
+                <Label Text="Show options" HorizontalOptions="StartAndExpand"  VerticalOptions="Center" FontSize="Small"></Label>
             </StackLayout>
-        </FlexLayout>
         <Label Text="{Binding UrlToShow}"  FontSize="Small"  IsVisible="{Binding ShowUrl}"  Padding="2,2,2,2"/>
-        <WebView x:Name="videoComp" VerticalOptions="FillAndExpand"/>
-    </StackLayout>
+        <WebView x:Name="videoComp" FlexLayout.Grow="1" VerticalOptions="FillAndExpand"/>
+    </FlexLayout>
 
 </ContentPage>
