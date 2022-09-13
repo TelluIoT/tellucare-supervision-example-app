@@ -9,23 +9,19 @@
             JustifyContent="SpaceAround">
             <StackLayout x:Name="containerHealthProvider" Orientation="Horizontal"  Padding="2,2,2,2"
                  HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="Realm" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
                 <Entry x:Name="healthProvider" Placeholder="Health Provider" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
             </StackLayout>
             <StackLayout x:Name="containerPatientId" Orientation="Horizontal"  Padding="2,2,2,2"
                  HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="Patient ID" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
-                <Entry x:Name="patientId" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
+                <Entry x:Name="patientId" WidthRequest="250" VerticalOptions="Center"  FontSize="Small" Placeholder="Patient ID" />
             </StackLayout>
             <StackLayout x:Name="containerToken" Orientation="Horizontal"  Padding="2,2,2,2"
                  HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="Token" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
-                <Entry x:Name="token" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
+                <Entry x:Name="token" WidthRequest="250" VerticalOptions="Center"  FontSize="Small" Placeholder="Token" />
             </StackLayout>
             <StackLayout x:Name="containerColor" Orientation="Horizontal"  Padding="2,2,2,2"
                  HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="Color" WidthRequest="100" VerticalOptions="Center" FontSize="Small"/>
-                <Entry x:Name="color" WidthRequest="250" VerticalOptions="Center"  FontSize="Small"/>
+                <Entry x:Name="color" WidthRequest="250" VerticalOptions="Center"  FontSize="Small" Placeholder="Color" />
             </StackLayout>
             <StackLayout x:Name="containerButton"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal"  Padding="2,2,2,2">
                 <Button Text="Start"

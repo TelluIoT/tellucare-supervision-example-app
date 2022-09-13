@@ -54,14 +54,10 @@ namespace tellucare_supervision_example_app
                 return;
             }
             string urlStr = String.Format("https://tellucare-embedded-dev.tellucloud.com/{0}/viewPatient/{1}", healthProvider.Text, patientId.Text);
-            // add token
-            urlStr += addDivider("token", token.Text);
-            // add color
-            urlStr += addDivider("color", color.Text);
             // add autoPlay
             urlStr += addDivider("autoPlay", "true");
             // add hideControls
-            urlStr += addDivider("hideControls", "true");
+            urlStr += addDivider("hideControls", "false");
             // update label with url
             UrlToShow = urlStr;
             // update source attribute on webview component
