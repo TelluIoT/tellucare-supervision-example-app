@@ -11,7 +11,7 @@ General documentation about the player, , see [Getting started with Embedded vid
 ## Android settings
 
 In order to embed a room in Android, add these permissions to the manifest:
-```xml
+```XML
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
@@ -20,7 +20,7 @@ In order to embed a room in Android, add these permissions to the manifest:
 The Tellucare supervision embedded player can be included in your app by using the [WebView](https://docs.microsoft.com/en-us/dotnet/api/xamarin.forms.webview?view=xamarin-forms) class.
 
 Example
-```xml
+```XML
 <WebView Source="https://<ENVIRONMENT>/<REALM>/viewPatient/<PATIENT_ID>[#][token=<AUTHENTICATION_TOKEN>][<QUERRY_PARAMS>]"/>
 ```
 	
@@ -28,3 +28,6 @@ Format for the url in Source, see [Adding embedded camera view to your web appli
 
 See code in MainPage.xaml and MainPage.xaml.cs.
 
+## Application image
+
+![Application](app.JPG)
