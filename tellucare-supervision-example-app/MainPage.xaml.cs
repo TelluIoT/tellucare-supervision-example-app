@@ -113,6 +113,10 @@ namespace tellucare_supervision_example_app
                 return;
             }
             string urlStr = String.Format(SelectedServer.Url, healthProvider.Text, patientId.Text);
+            // add token
+            urlStr += addDivider("token", token.Text);
+            // add color
+            urlStr += addDivider("color", color.Text);
             // add autoPlay
             urlStr += addDivider("autoPlay", ShowAutoPlay ? "true" : "false");
             // add hideControls
