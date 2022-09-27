@@ -34,6 +34,11 @@
                 <CheckBox x:Name="checkBoxControls"  IsChecked="{Binding ShowControls}"  VerticalOptions="Center"/>
                 <Label Text="Show controls" HorizontalOptions="StartAndExpand"  VerticalOptions="Center" FontSize="Small"></Label>
             </StackLayout>
+            <StackLayout x:Name="containerStatusbar"  WidthRequest="250" Orientation="Horizontal"  Padding="2,2,2,2"
+                 HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding ShowOptions}">
+            <CheckBox x:Name="checkBoxStatusbar"  IsChecked="{Binding ShowStatusBar}"  VerticalOptions="Center"/>
+            <Label Text="Show statusbar" HorizontalOptions="StartAndExpand"  VerticalOptions="Center" FontSize="Small"></Label>
+            </StackLayout>
             <StackLayout x:Name="containerAutoPlay"  WidthRequest="250" Orientation="Horizontal"  Padding="2,2,2,2"
                  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding ShowOptions}">
                 <CheckBox x:Name="checkBoxAutoPlay"  IsChecked="{Binding ShowAutoPlay}"  VerticalOptions="Center"/>

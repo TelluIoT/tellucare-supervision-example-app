@@ -18,9 +18,12 @@ namespace tellucare_supervision_example_app
         public bool showUrl = false;
         public bool showOptions = false;
         public bool showControls = true;
+        public bool showStatusbar = true;
         public bool showAutoPlay = true;
         public List<Server> servers = new List<Server>(){
-            new Server(){ Name = "dev", Url = "https://tellucare-embedded-dev.tellucloud.com/{0}/viewPatient/{1}" }
+            new Server(){ Name = "dev", Url = "https://tellucare-embedded.dev.tellucloud.com/embedded/{0}/viewPatient/{1}" },
+            new Server(){ Name = "demo", Url = "https://tellucare-embedded.tellucare-demo.com/embedded/{0}/viewPatient/{1}" },
+            new Server(){ Name = "stage", Url = "https://tellucare-embedded.stage.tellucloud.com/embedded/{0}/viewPatient/{1}" }
         };
         Server selectedServer;
         public string UrlToShow
@@ -69,6 +72,15 @@ namespace tellucare_supervision_example_app
             {
                 showControls = value;
                 OnPropertyChanged(nameof(ShowControls));
+            }
+        }
+        public bool ShowStatusBar
+        {
+            get { return showStatusbar; }
+            set
+            {
+                showStatusbar = value;
+                OnPropertyChanged(nameof(ShowStatusBar));
             }
         }
         public bool ShowAutoPlay
@@ -121,6 +133,8 @@ namespace tellucare_supervision_example_app
             urlStr += addDivider("autoPlay", ShowAutoPlay ? "true" : "false");
             // add hideControls
             urlStr += addDivider("hideControls", !ShowControls ? "true" : "false");
+            // add hideControls
+            urlStr += addDivider("hideStatusbar", !ShowStatusBar ? "true" : "false");
             // update label with url
             UrlToShow = urlStr;
             // update source attribute on webview component
